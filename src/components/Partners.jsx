@@ -1,25 +1,28 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const LOGOS = ['TATA TRUSTS','AZIM PREMJI PHILANTHROPIES','INFOSYS FOUNDATION','HCL FOUNDATION','WIPRO CARES','HDFC PARIVARTAN','MAHINDRA FOUNDATION'];
-
 const Partners = () => (
-  <section style={{ background: '#F8FAFC', borderTop: '1px solid #E2E8F0', borderBottom: '1px solid #E2E8F0', padding: '52px 0' }}>
-    <p style={{ textAlign: 'center', fontSize: '11px', fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#94A3B8', marginBottom: '36px' }}>
-      Trusted by India's Leading CSR Foundations
-    </p>
-    <div style={{ overflow: 'hidden', maskImage: 'linear-gradient(to right, transparent, black 12%, black 88%, transparent)', WebkitMaskImage: 'linear-gradient(to right, transparent, black 12%, black 88%, transparent)' }}>
-      <motion.div
-        animate={{ x: '-50%' }}
-        transition={{ duration: 35, repeat: Infinity, ease: 'linear' }}
-        style={{ display: 'flex', gap: '80px', alignItems: 'center', whiteSpace: 'nowrap' }}
-      >
-        {[...LOGOS, ...LOGOS].map((logo, i) => (
-          <span key={i} style={{ fontSize: '13px', fontWeight: 800, color: '#CBD5E1', letterSpacing: '0.12em', cursor: 'default', userSelect: 'none' }}>
-            {logo}
-          </span>
+  <section style={{ background: '#FFFFFF', padding: '60px 0', borderTop: '1px solid #F1F5F9', borderBottom: '1px solid #F1F5F9' }}>
+    <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 48px', textAlign: 'center' }}>
+      <p style={{ fontSize: 11, fontWeight: 700, color: '#94A3B8', textTransform: 'uppercase', letterSpacing: '0.2em', marginBottom: 40 }}>
+        Trusted by forward-thinking companies and credible foundations
+      </p>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 48, flexWrap: 'wrap', opacity: 0.4 }}>
+        {[1, 2, 3, 4, 5].map(i => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
+            style={{
+              height: 36, width: 160, borderRadius: 10,
+              background: 'linear-gradient(90deg, #E2E8F0, #F1F5F9)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              fontSize: 11, fontWeight: 800, color: '#CBD5E1', letterSpacing: '0.1em', textTransform: 'uppercase',
+            }}
+          >
+            Partner {i}
+          </motion.div>
         ))}
-      </motion.div>
+      </div>
     </div>
   </section>
 );

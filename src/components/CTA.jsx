@@ -1,82 +1,83 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Building2, HeartHandshake } from 'lucide-react';
+import { Building2, Leaf, ArrowRight } from 'lucide-react';
+
+const NAVY = '#1B4FD8';
+const BLUE = '#2563EB';
 
 const CTA = () => (
-  <section style={{ background: '#F8FAFC', padding: '96px 48px', borderTop: '1px solid #E2E8F0' }}>
-    <div style={{ maxWidth: '960px', margin: '0 auto' }}>
+  <section style={{ background: '#FFFFFF', padding: '80px 0 108px' }}>
+    <div style={{ maxWidth: 1320, margin: '0 auto', padding: '0 48px' }}>
       <motion.div
-        initial={{ opacity: 0, y: 32 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-        viewport={{ once: true }}
+        initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
         style={{
-          background: 'linear-gradient(135deg, #1E3A8A 0%, #1D4ED8 45%, #2563EB 100%)',
-          borderRadius: '32px', padding: '72px 60px',
-          textAlign: 'center', position: 'relative', overflow: 'hidden',
-          boxShadow: '0 32px 80px rgba(37,99,235,0.28)',
+          position: 'relative', overflow: 'hidden', borderRadius: 44,
+          background: 'linear-gradient(135deg, #0D2B8B 0%, #1B4FD8 40%, #2563EB 70%, #3B82F6 100%)',
+          padding: '88px 80px', textAlign: 'center',
+          boxShadow: '0 40px 100px rgba(27,79,216,0.30), 0 0 0 1px rgba(255,255,255,0.06) inset',
         }}
       >
-        {/* Orbs */}
-        <div style={{ position: 'absolute', top: -70, right: -70, width: 220, height: 220, borderRadius: '50%', background: 'rgba(255,255,255,0.06)', pointerEvents: 'none' }} />
-        <div style={{ position: 'absolute', bottom: -50, left: -50, width: 180, height: 180, borderRadius: '50%', background: 'rgba(255,255,255,0.04)', pointerEvents: 'none' }} />
+        {/* Background orbs */}
+        <div style={{ position: 'absolute', top: -80, right: -80, width: 320, height: 320, borderRadius: '50%', background: 'radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%)' }} />
+        <div style={{ position: 'absolute', bottom: -60, left: -60, width: 240, height: 240, borderRadius: '50%', background: 'radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%)' }} />
+        {/* Grid pattern */}
+        <div style={{
+          position: 'absolute', inset: 0, opacity: 0.05,
+          backgroundImage: 'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)',
+          backgroundSize: '40px 40px',
+        }} />
 
-        <div style={{ position: 'relative', zIndex: 1 }}>
+        <div style={{ position: 'relative' }}>
           <div style={{
-            display: 'inline-flex', alignItems: 'center', gap: '8px',
-            padding: '6px 18px', marginBottom: '32px',
-            borderRadius: '999px', background: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.2)',
-            color: 'white', fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
+            display: 'inline-flex', alignItems: 'center', gap: 8,
+            padding: '7px 18px', borderRadius: 999, marginBottom: 28,
+            background: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.2)',
+            backdropFilter: 'blur(8px)',
+            fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.9)',
+            textTransform: 'uppercase', letterSpacing: '0.14em',
           }}>
-            <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#93C5FD', display: 'inline-block' }} />
+            <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#93C5FD', boxShadow: '0 0 0 3px rgba(147,197,253,0.25)' }} />
             Start Making an Impact Today
           </div>
 
           <h2 style={{
-            fontSize: 'clamp(26px, 4.5vw, 50px)', fontWeight: 900,
-            letterSpacing: '-0.025em', lineHeight: 1.1,
-            color: 'white', marginBottom: '20px',
+            fontSize: 'clamp(34px, 5vw, 64px)', fontWeight: 900, color: 'white',
+            lineHeight: 1.05, letterSpacing: '-0.03em', marginBottom: 20,
           }}>
-            Ready to Fulfil Your<br />CSR Mandate Meaningfully?
+            Ready to create
+            <br />meaningful impact?
           </h2>
 
-          <p style={{ fontSize: '17px', color: 'rgba(219,234,254,0.85)', maxWidth: '500px', margin: '0 auto 48px', lineHeight: 1.7 }}>
-            Join 500+ corporations already using Impact Hub to plan, deploy,
-            and report their CSR spend with full compliance and real-world outcomes.
+          <p style={{ fontSize: 18, color: 'rgba(219,234,254,0.85)', lineHeight: 1.75, maxWidth: 540, margin: '0 auto 52px', fontWeight: 400 }}>
+            Join the ecosystem where transparency meets social urgency. Register today and start your impact journey.
           </p>
 
-          <div style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <button
+          <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
+            <motion.button
+              whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.97 }}
               style={{
-                display: 'inline-flex', alignItems: 'center', gap: '8px',
-                background: 'white', color: '#1D4ED8', fontWeight: 700, fontSize: '14px',
-                padding: '14px 28px', borderRadius: '14px', border: 'none', cursor: 'pointer',
-                boxShadow: '0 8px 24px rgba(0,0,0,0.15)',
-                transition: 'transform 0.2s, box-shadow 0.2s',
+                display: 'inline-flex', alignItems: 'center', gap: 10,
+                padding: '18px 36px', borderRadius: 18,
+                background: 'rgba(255,255,255,0.97)',
+                color: NAVY, fontWeight: 800, fontSize: 15.5, border: 'none', cursor: 'pointer',
+                boxShadow: '0 8px 28px rgba(0,0,0,0.18), 0 1px 0 rgba(255,255,255,0.9) inset',
               }}
-              onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; }}
-              onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; }}
             >
-              <Building2 size={16} /> I'm a Corporation
-            </button>
-            <button
+              <Building2 size={18} /> Join as Company
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.97 }}
               style={{
-                display: 'inline-flex', alignItems: 'center', gap: '8px',
-                background: 'rgba(255,255,255,0.12)', border: '1.5px solid rgba(255,255,255,0.3)',
-                color: 'white', fontWeight: 700, fontSize: '14px',
-                padding: '14px 28px', borderRadius: '14px', cursor: 'pointer',
-                transition: 'background 0.2s',
+                display: 'inline-flex', alignItems: 'center', gap: 10,
+                padding: '18px 36px', borderRadius: 18,
+                background: 'rgba(255,255,255,0.12)', backdropFilter: 'blur(12px)',
+                color: 'white', fontWeight: 800, fontSize: 15.5,
+                border: '1.5px solid rgba(255,255,255,0.25)', cursor: 'pointer',
               }}
-              onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.22)'; }}
-              onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.12)'; }}
             >
-              <HeartHandshake size={16} /> I'm a Foundation / NGO
-            </button>
+              <Leaf size={18} /> Register NGO <ArrowRight size={16} />
+            </motion.button>
           </div>
-
-          <p style={{ marginTop: '24px', fontSize: '12px', color: 'rgba(191,219,254,0.7)', fontWeight: 500 }}>
-            Free to join · No platform fee for verified NGOs · MCA Schedule VII compliant
-          </p>
         </div>
       </motion.div>
     </div>

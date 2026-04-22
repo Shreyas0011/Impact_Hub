@@ -1,127 +1,74 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
 
-@theme {
-
-  /* Brand Colors - Light Theme */
-  --color-primary-navy:   #1B4FD8;
-  --color-primary-blue:   #2563EB;
-  --color-primary-light:  #3B82F6;
-  --color-primary-green:  #16A34A;
-  --color-primary-orange: #F97316;
-
-  /* Backgrounds */
-  --color-bg-base:        #F8FAFF;
-  --color-bg-surface:     #FFFFFF;
-  --color-bg-muted:       #EEF3FF;
-  --color-bg-elevated:    #DBEAFE;
-
-  /* Text */
-  --color-text-primary:   #0F172A;
-  --color-text-secondary: #475569;
-  --color-text-muted:     #94A3B8;
-
-  /* Borders */
-  --color-border-default: #E2E8F0;
-  --color-border-strong:  #BFDBFE;
-
-  --font-main: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-
-  @keyframes shimmer {
-    0%   { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
-  }
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50%       { transform: translateY(-12px); }
-  }
-  @keyframes reveal {
-    0%   { opacity: 0; transform: translateY(24px); }
-    100% { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes scroll {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
-  }
-}
-
-/* ──────────────────────────────────────────────────
-   Global Resets & Base
-────────────────────────────────────────────────── */
+/* ── Global Resets ─────────────────────────────── */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
-  font-family: var(--font-main);
-  background-color: var(--color-bg-base);
-  color: var(--color-text-primary);
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #FFFFFF;
+  color: #0F172A;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  text-rendering: optimizeLegibility;
 }
 
-::selection {
-  background: var(--color-primary-blue);
-  color: white;
+/* Lenis smooth scroll */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
 }
 
-/* ──────────────────────────────────────────────────
-   Reusable components
-────────────────────────────────────────────────── */
-@layer components {
+::selection { background: #2563EB; color: white; }
 
-  /* Light card / panel */
-  .card {
-    @apply bg-white border border-blue-100 rounded-3xl shadow-sm;
-  }
+/* ── Scrollbar ─────────────────────────────────── */
+::-webkit-scrollbar        { width: 5px; }
+::-webkit-scrollbar-track  { background: transparent; }
+::-webkit-scrollbar-thumb  { background: #CBD5E1; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
 
-  /* Pill badge */
-  .badge {
-    @apply inline-flex items-center gap-2 px-4 py-1.5
-           rounded-full bg-blue-50 border border-blue-200
-           text-primary-blue text-xs font-bold uppercase tracking-widest;
-  }
-
-  /* Primary CTA button */
-  .btn-primary {
-    @apply inline-flex items-center justify-center gap-2
-           bg-primary-blue text-white font-bold
-           px-8 py-4 rounded-2xl
-           shadow-[0_8px_24px_rgba(37,99,235,0.35)]
-           hover:bg-blue-700 hover:-translate-y-0.5
-           transition-all duration-300;
-  }
-
-  /* Ghost /outline button */
-  .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2
-           bg-white text-primary-navy font-bold
-           border-2 border-blue-200
-           px-8 py-4 rounded-2xl
-           hover:border-primary-blue hover:bg-blue-50
-           transition-all duration-300;
-  }
-
-  /* Smooth luxury transition */
-  .transition-luxury {
-    @apply transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)];
-  }
-
-  /* Section container  */
-  .section-container {
-    @apply max-w-7xl mx-auto px-6 md:px-12;
-  }
+/* ── Keyframe Animations ────────────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-14px); }
 }
 
-/* ──────────────────────────────────────────────────
-   Scrollbar
-────────────────────────────────────────────────── */
-::-webkit-scrollbar        { width: 6px; }
-::-webkit-scrollbar-track  { background: #F1F5F9; }
-::-webkit-scrollbar-thumb  { background: #BFDBFE; border-radius: 10px; }
-::-webkit-scrollbar-thumb:hover { background: #93C5FD; }
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ── Utilities ──────────────────────────────────── */
+.text-shimmer {
+  background: linear-gradient(90deg, #60A5FA, #2563EB, #1B4FD8, #2563EB, #60A5FA);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+
+/* Scroll-reveal fade up (used with Framer) */
+.reveal { opacity: 0; transform: translateY(24px); }
